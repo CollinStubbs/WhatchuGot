@@ -689,6 +689,21 @@ section h3.section-subheading {
     margin-top: 0;
 }
 
+.team {
+    text-align: center;
+    color: #fff;
+    
+    background-attachment: scroll;
+    background-image: url(../img/introo3.jpg);
+    -webkit-background-size: cover; /* For WebKit*/
+    -moz-background-size: cover;    /* Mozilla*/
+    -o-background-size: cover;      /* Opera*/
+    background-size: cover;         /* Generic*/
+
+    background-position: center center;
+    background-repeat: repeat-x;
+}
+
 aside.clients img {
     margin: 50px auto;
 }
