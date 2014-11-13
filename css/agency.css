@@ -30,7 +30,7 @@ p.large {
 
 p.logotext {
  font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
-    color: #fed136;
+    color: #DBBC09;
     font-size: 60px;
 }
 
@@ -269,12 +269,31 @@ fieldset[disabled] .btn-xl.active {
     }
 }
 
+.box_textshadow {
+     text-shadow: 3px 3px 3px #000000; /* FF3.5+, Opera 9+, Saf1+, Chrome, IE10 */
+}
+
 header {
     text-align: center;
     color: #fff;
     
     background-attachment: scroll;
     background-image: url(../img/introf.jpg);
+    -webkit-background-size: cover; /* For WebKit*/
+    -moz-background-size: cover;    /* Mozilla*/
+    -o-background-size: cover;      /* Opera*/
+    background-size: cover;         /* Generic*/
+
+    background-position: center center;
+    background-repeat: repeat-x;
+    
+}
+header.aboutpage {
+    text-align: center;
+    color: #fff;
+    
+    background-attachment: scroll;
+    background-image: url(../img/introo3.jpg);
     -webkit-background-size: cover; /* For WebKit*/
     -moz-background-size: cover;    /* Mozilla*/
     -o-background-size: cover;      /* Opera*/
