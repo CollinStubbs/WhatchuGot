@@ -350,6 +350,18 @@ header .intro-text .intro-heading {
   -webkit-transition:.5s;
   transition:.5s;
 }
+.rotates:hover {
+  -webkit-transform: rotate(-7200deg) translate3d( 0, 0, 0);
+  -moz-transform: rotate(-7200deg);
+  -o-transform: rotate(-7200deg);
+  -ms-transform: rotate(-7200deg);
+  transform: rotate(-7200deg);
+  -o-transition:12.5s;
+  -ms-transition:12.5s;
+  -moz-transition:12.5s;
+  -webkit-transition:12.5s;
+  transition:12.5s;
+}
 
 @media(min-width:768px) {
     header .intro-text {
