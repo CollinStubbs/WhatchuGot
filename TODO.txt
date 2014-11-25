@@ -1,0 +1,3 @@
+- Login page: html page, table in database{username, fname, lname, email, pass, accounttype}
+- ClassifiedHomePage: html page[post id,date,  category name, title, description, image], table{username, postid, status}, table{postid, date, categoryid, title, description, imagename}
+- ProfilePage html page[list of posts, messages from users], table{messageid, senderid, recieverid, date, message}
