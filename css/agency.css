@@ -177,6 +177,10 @@ fieldset[disabled] .btn-xl.active {
     background-color: #fff;
 }
 
+.ContactInput{
+    text-align: center;
+}
+
 .navbar-default {
     border-color: transparent;
     background-color: #222;

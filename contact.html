@@ -62,9 +62,14 @@
     <header class="aboutpage">
         <div class="container">
             <div class="about-text">
-                <div class="body-lead-in">You wanna contact us? Wicked! <a href="mailto:webmaster@example.com">Click Here!</a> </div>
+                <div class="body-lead-in">Fill out the contact information below and send us an email!</div>
                 
-               <img class="logoabout" src="img/transbeaver.png" height="400" width="300">
+               <form name="input" action="nothingyet.asp" method="get">
+                   <label><input class="form-control input-lg ContactInput" type="text" name="name" placeholder="Full Name"></label><br><br>
+                   <label><input type="text" class="form-control input-lg ContactInput" name="email" placeholder="Email Address"></label><br><br>
+                   <textarea class="form-control" name="comment" rows="6" cols="50" placeholder="Enter your comments here..."></textarea><br>
+                   <button type="submit" class="btn btn-lg btn-success">Submit</button>
+                </form>
                 <p class="logotext box_textshadow">Whatchu Got?</p>
                 
                 </br></br></br></br></br></br>
