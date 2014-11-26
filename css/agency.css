@@ -33,6 +33,7 @@ p.logotext {
  font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
     color: #DBBC09;
     font-size: 60px;
+  
 }
 
 a,
@@ -356,6 +357,17 @@ header .intro-text {
 header .about-text {
     padding-top: 140px;
     
+}
+header .contact-text {
+ padding-top: 140px;  
+    padding-bottom: 70px;
+}
+header .contact-text .body-lead-in {
+    margin-bottom: 25px;
+    font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 25px;
+    font-style: italic;
+    line-height: 40px;
 }
 
 header .intro-text .intro-lead-in {
