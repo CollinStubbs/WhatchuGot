@@ -21,7 +21,7 @@
         <link href='http://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-    </head>
+        
         <body>
             <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -62,34 +62,22 @@
         <!-- /.container-fluid -->
     </nav>
 <!-- Header -->
-    <header class="registerpage">
+    <header class="aboutpage">
         <div class="container">
-            <div class="logtext">
-                <div class="body-lead-in ">Login below!</div>
-                <div class="row" style="margin-top:20px">
-                <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-                    <form role="form">
-                        <fieldset>
-                            <hr class="colorgraph">
-                            <div class="form-group">
-                                <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address">
-                            </div>
-                            <div class="form-group">
-                                <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password">
-                            </div>
-                            <hr class="colorgraph">
-                            <div class="row">
-                                <div class="col-xs-6 col-sm-6 col-md-6">
-                                    <input type="submit" class="btn btn-lg btn-success btn-block" value="Login" style="background-color:#007C87">
-                                </div>
-                                <div class="col-xs-6 col-sm-6 col-md-6">
-                                    <a href="create.html" class="btn btn-lg btn-success btn-block" value="Register" style="background-color: #fed136">Register</a>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </form>
-                </div>               
-            </div>
+            <div class="contact-text">
+                <div class="body-lead-in">Fill out the information below to register with us!</div>
+                </div>
+               <form name="input" action="nothingyet.asp" method="get">
+                   <label><input type="text" class="form-control input-lg ContactInput" name="username" placeholder="Username"></label><br><br>
+                   <label><input class="form-control input-lg ContactInput" type="text" name="fname" placeholder="First Name"></label><br><br>
+                   <label><input type="text" class="form-control input-lg ContactInput" name="lname" placeholder="Last Name"></label><br><br>
+                   
+                   <label><input type="text" class="form-control input-lg ContactInput" name="email" placeholder="Email Address"></label><br><br>
+                   <label><input type="text" class="form-control input-lg ContactInput" name="password" placeholder="Password"></label><br><br>                   
+                   <button type="submit" class="btn btn-lg btn-success" style="background-color:#007C87">Submit</button>
+                </form>
+                
+            
         </div>
     </header>
                <!-- jQuery -->

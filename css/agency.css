@@ -338,7 +338,7 @@ header.aboutpage {
     line-height: 22px;
 }
 .logtext .body-lead-in{
-    color: #000000;
+    color: #FFFFFF;
   
     padding-top: 240px;
     padding-bottom: 30px;
@@ -346,7 +346,7 @@ header.aboutpage {
     font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 40px;
     font-style: italic;
-    font-weight: 900;
+    font-weight: 300;
     line-height: 22px;
 }
 
