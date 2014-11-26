@@ -5,7 +5,8 @@
  */
 
 body {
-    height: 100%;
+   height: 100vh;
+ 
     overflow-x: hidden;
     font-family: "Roboto Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
@@ -281,6 +282,7 @@ header {
     text-align: center;
     color: #fff;
     height: 100%;
+    display: inherit;
     background-attachment: scroll;
     background-image: url(../img/introf.jpg);
     -webkit-background-size: cover; /* For WebKit*/
@@ -290,7 +292,7 @@ header {
 
     background-position: center center;
     background-repeat: repeat-x;
-    
+    padding-bottom: 40px;
 }
 
 header.registerpage {
@@ -335,12 +337,14 @@ header.aboutpage {
     line-height: 22px;
 }
 .logtext .body-lead-in{
-    color: #fed136;
+    color: #000055;
+   
     padding-top: 140px;
     margin-bottom: 25px;
     font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 40px;
     font-style: italic;
+    font-weight: bold;
     line-height: 22px;
 }
 
@@ -405,8 +409,8 @@ header .intro-text .intro-heading {
 
 @media(min-width:768px) {
     header .intro-text {
-        padding-top: 300px;
-        padding-bottom: 200px;
+        padding-top: 200px;
+        padding-bottom: 100px;
     }
 
     header .intro-text .intro-lead-in {
