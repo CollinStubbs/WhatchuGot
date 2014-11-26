@@ -1,3 +1,11 @@
-- Login page: html page, table in database{username, fname, lname, email, pass, accounttype}
-- ClassifiedHomePage: html page[post id,date,  category name, title, description, image], table{username, postid, status}, table{postid, date, categoryid, title, description, imagename}
+- Login page: html page, table in database{username, fname, lname, email, pass, accounttype} --- NEEDS TO BE HOOKED UP TO DATABASE
+- ClassifiedHomePage: html page[post id,date,  category name, title, description, image], table{username, postid, date, categoryid, title, description, imagename}
 - ProfilePage html page[list of posts, messages from users], table{messageid, senderid, recieverid, date, message}
+
+- make all forms update database
+
+- go live
+- get bought by kijiji or craigslist
+- retire
+
+- Add contact form on contact.html -- DONE 
