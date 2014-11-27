@@ -9,3 +9,9 @@
 - retire
 
 - Add contact form on contact.html -- DONE 
+
+My Task tommorrow(iyosias)
+- Link the contact form to database so that all inputs will be stored in db
+- create a form to post adds and store that input in the database table
+- display all posts in a page
+- enable login 
