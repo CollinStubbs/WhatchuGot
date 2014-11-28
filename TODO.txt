@@ -12,6 +12,6 @@
 
 My Task tommorrow(iyosias)
 - Link the contact form to database so that all inputs will be stored in db -- Done
-- create a form to post adds and store that input in the database table
+- create a form to post adds and store that input in the database table -- Done
 - display all posts in a page
 - enable login 
