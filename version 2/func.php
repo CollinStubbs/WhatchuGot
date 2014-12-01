@@ -112,33 +112,36 @@ if (!logged_in()){
 	}
 }
 function addPost($name, $category, $title, $description, $image, $image_name){
-	date_default_timezone_set('US/Eastern');
-	$currtime = time();
-	$datedb = date('Y-m-d H:i:s', $currtime);
-	require_once("cred.php");
-			
-	$statement = $conn->prepare("INSERT INTO posts(username, date, categoryId, title, description, adminStatus, status, image, imageName, university) values (:name, :date, :category, :title, :description, :adminStatus, :status, :image, :imageName, :university");
-	//$statement->bindValue(":postId", '');
+	// code goes here
+			//addPost($name, $category, $title, $description, $image, $image_name);
+			$message = "";
+			date_default_timezone_set('US/Eastern');
+			$currtime = time();
+			$datedb = date('Y-m-d H:i:s', $currtime);
+			require_once("cred.php");
+			$statement = $conn->prepare("INSERT INTO posts(username, date, categoryId, title, description, adminStatus, status, image, imageName, university) values (:name, :date, :category, :title, :description, :adminStatus, :status, :image, :imageName, :university)");
 	$statement->bindValue(":name", $name);
-	$statement->bindValue(":date", $datedb); 
+	$statement->bindValue(":date", $datedb);
 	$statement->bindValue(":category", $category); 
 	$statement->bindValue(":title", $title);
-	$statement->bindValue(":description", $description); 
+	$statement->bindValue(":description", $description);
 	$statement->bindValue(":adminStatus", "Pending"); 
-	$statement->bindValue(":status", "available"); 
+	$statement->bindValue(":status", "available");
 	$statement->bindValue(":image", $image);
-	$statement->bindValue(":imageName", $image_name); 
-	$statement->bindValue(":university", "Brock"); 
+	$statement->bindValue(":imageName", $image_name);
+	$statement->bindValue(":university", $_SESSION["user_uni"]); 
     $statement->execute();
 	$numRowsAffected = $statement->rowCount();
-	if ($numRowsAffected == 0){
-		die("Database statment failed inside add post.");
-	}
-	else{
-		$message = "Ad has been succesfully sent";
-	}
+		if ($numRowsAffected == 0){
+			$message = "Database statment failed.";
+		}
+		else{
+			$message = "Ad has been succesfully sent";
+		}
 	require("closeDatabase.php");
+	return $message;
 }
+
 function getContactMessage(){
 	require("cred.php");
 	$msgTable = "";
@@ -166,5 +169,56 @@ function getContactMessage(){
 	  require("closeDatabase.php");
 	  return $msgTable;
 }
+function getAllPost(){
+	require("cred.php");
+	$msgTable = "";
+	  $statement = $conn->prepare("SELECT * from posts order by date");
+	  $statement->execute();
+	  $statement->setFetchMode(PDO::FETCH_ASSOC);
+	  if (!$statement){
+				die("Database query failed. Can't access contact message");
+	  }
+	  else{
+		  
+		  $msgTable = "<table width=\"80%\" border=\"1\">";
+			$msgTable .= "<tr><th>Post ID</th><th>Title</th><th>Description</th><th>University</th><th>Date</th><th>Image</th>";
+			for ($i = 0; $i <$statement->rowCount(); $i++) {
+				$row = $statement->fetch();
+				$msgTable .= "<tr><td>" . $row["postid"] ."</td>";
+				$msgTable .= "<td>" . $row["title"] . "</td>";
+				$msgTable .= "<td>" . $row["description"] . "</td>";
+				$msgTable .= "<td>" . $row["university"] . "</td>";
+				$msgTable .= "<td>" . $row["date"] . "</td>";
+				$msgTable .= "<td><img src=\"showPost.php?id=".$row["postid"]."\" width='128px' height='128px' /></td>";
+				$msgTable .= "</tr>";
+			}
+			$msgTable .= "</table>";
+	  }
+	  require("closeDatabase.php");
+	  return $msgTable;
+	
+}
+function getImageByIDNumber(){
+	require("cred.php");
+	$imageData = "";
+	if (isset($_GET['id'])){
+		$statement = $conn->prepare("SELECT * from posts order by date WHERE postid=".$id);
+	  	$statement->execute();
+	  	$statement->setFetchMode(PDO::FETCH_ASSOC);
+		if (!$statement){
+				die("Database query failed. Can't access contact message");
+	  	}
+		$row = $statement->fetch();
+		$imageData = $row["image"];
+		header("content-type: image/jpeg");
+		$message = "<img src=\"showPost.php?id=".$id ."\"/>";
+		echo $message;
+	}
+	else {
+		echo "Error";
+	}
+	require("closeDatabase.php");
+	
+} 
 
 ?>

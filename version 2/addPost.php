@@ -27,32 +27,7 @@
 		}
 		else 
 		{
-			// code goes here
-			//addPost("andrew", $category, $title, $description, $image, $image_name);
-			date_default_timezone_set('US/Eastern');
-			$currtime = time();
-			$datedb = date('Y-m-d H:i:s', $currtime);
-			require_once("cred.php");
-			$statement = $conn->prepare("INSERT INTO posts(username, date, categoryId, title, description, adminStatus, status, image, imageName, university) values (:name, :date, :category, :title, :description, :adminStatus, :status, :image, :imageName, :university)");
-	$statement->bindValue(":name", $_SESSION["user_id"]);
-	$statement->bindValue(":date", $datedb);
-	$statement->bindValue(":category", $category); 
-	$statement->bindValue(":title", $title);
-	$statement->bindValue(":description", $description);
-	$statement->bindValue(":adminStatus", "Pending"); 
-	$statement->bindValue(":status", "available");
-	$statement->bindValue(":image", $image);
-	$statement->bindValue(":imageName", $image_name);
-	$statement->bindValue(":university", $_SESSION["user_uni"]); 
-    $statement->execute();
-	$numRowsAffected = $statement->rowCount();
-		if ($numRowsAffected == 0){
-			echo $numRowsAffected ."Database statment failed inside add post.";
-		}
-		else{
-			$message = "Ad has been succesfully sent";
-		}
-	require("closeDatabase.php");
+			$message = addPost($_SESSION["user_id"], $category, $title, $description, $image, $image_name);
 		}
 	}
 	else
