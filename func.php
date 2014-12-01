@@ -189,7 +189,8 @@ function getAllPost(){
 				$msgTable .= "<td>" . $row["description"] . "</td>";
 				$msgTable .= "<td>" . $row["university"] . "</td>";
 				$msgTable .= "<td>" . $row["date"] . "</td>";
-				$msgTable .= "<td><img src=\"showPost.php?id=".$row["postid"]."\" width='128px' height='128px' /></td>";
+				$decodedImage = base64_decode($row["Image"]);
+				$msgTable .= "<td><img src=\"showPost.php?id=".$row["image"]."\" width='128px' height='128px' /></td>";
 				$msgTable .= "</tr>";
 			}
 			$msgTable .= "</table>";
@@ -220,5 +221,25 @@ function getImageByIDNumber(){
 	require("closeDatabase.php");
 	
 } 
+
+function sendMessageToAdmin($name, $email, $comment, $datedb){
+	require("cred.php");
+	$statement = $conn->prepare("INSERT INTO contact(fullname, email, message, date) values (:name, :email, :message, :date)");
+	$statement->bindValue(":name", $name);
+	$statement->bindValue(":email", $email); 
+	$statement->bindValue(":message", $comment); 
+	$statement->bindValue(":date", $datedb); 
+	$statement->execute();
+	$numRowsAffected = $statement->rowCount();
+	if ($numRowsAffected == 0){
+		$message = "Database statment failed.";
+	}
+	else{
+		$message = "Message has been sent";
+	}
+	require("closeDatabase.php");
+	return $message;
+	
+}
 
 ?>
