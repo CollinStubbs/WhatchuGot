@@ -19,24 +19,12 @@
 		}
 		else 
 		{
+            require("func.php");
 			date_default_timezone_set('US/Eastern');
   			$currtime = time();
   			$datedb = date('Y-m-d H:i:s', $currtime);
-			require_once("cred.php");
-			$query = "Insert INTO contact (fullName, email, message, date)
-			VALUES ('{$name}','{$email}','{$comment}', '{$datedb}')";
-			$result = mysql_query($query);
-			if (!$result){
-				die("Database query failed.");
-			}
-			else{
-				$message = "The message has been sent to Admin";
-				// close the database connection
-				mysql_close($conn);
-				$name = "";
-				$email = "";
-				$comment = "";
-			}
+		    $message = sendMessageToAdmin($name, $email, $comment, $datedb);
+			
 		}
 	}
 	else
