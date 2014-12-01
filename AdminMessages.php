@@ -1,23 +1,6 @@
-<?php
-  $host = 'localhost';
-  $username = 'root';
-  $password = '201274';
-  $conn = mysql_connect($host,$username,$password);
-  if (!$conn)  {
-    die('Could not connect: ' . mysql_error());
-  }
-  $dbname = 'whatchugot';
-  mysql_select_db($dbname, $conn);
-
-?>
-<?php
-	$query = "SELECT * FROM contact";
-	$result = mysql_query($query);
-	if (!$result){
-		die("Database query failed.");
-	}
-
-?>
+<?php require_once("session.php"); ?>
+<?php require("func.php"); ?>
+<?php check_logged_in_admin(); ?>
 <!DOCTYPE html>
 <html>
     
@@ -63,13 +46,16 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="about.html">Messages</a>
+                        <a class="page-scroll" href="AdminMessages.php">Messages</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="team.html">Posts</a>
+                        <a class="page-scroll" href="addPost.php">Posts</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="contact.html">Accounts</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="logout.php">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -83,21 +69,9 @@
         <div class="container">
             <div class="about-text">
             <?php
-			$msgTable = "<table width=\"80%\" border=\"1\">";
-			$msgTable .= "<tr><th>Date</th><th>Full Name</th><th>Email</th>";
-			$msgTable .= "<th>Message</th></tr>";
-			while ($row = mysql_fetch_assoc($result)){
-				$msgTable .= "<tr><td>" . $row["date"] ."</td>";
-				$msgTable .= "<td>" . $row["fullName"] . "</td>";
-				$msgTable .= "<td>" . $row["email"] . "</td>";
-				$msgTable .= "<td>" . $row["message"] . "</td>";
-				$msgTable .= "</tr>";
-			}
-			$msgTable .= "</table>";
+			$msgTable = getContactMessage();
 
 			echo $msgTable;
-			//release returned data
-			mysql_free_result($result);
 			?>
             </div>
         </div>

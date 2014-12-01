@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
     
@@ -6,6 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>Final Proj.</title>
         <meta name="description" content="Final Project">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css.css">
         
         <!-- Bootstrap Core CSS -->
@@ -33,7 +35,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="index.html">Whatchu Got?</a>
+                <a class="navbar-brand page-scroll" href="login.html">Whatchu Got?</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -60,19 +62,45 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
-
-    <!-- Header -->
-    <header class="aboutpage">
+<!-- Header -->
+    <header class="registerpage">
         <div class="container">
-            <div class="about-text">
-                <div class="body-lead-in">Whatchu Got is a campus classifieds website. It's a place for students to buy and sell things specific to their campus, on their campus. Whether textbooks, pencils, services, or excellently written notes if it's related to your campus then feel free to post it here! </div>
-                </div>
-               <img class=" logoabout" src="img/transbeaver.png" height="380" width="300">
-                <p class="logotext box_textshadow">Whatchu Got?</p>        
+            <div class="logtext">
+                <div class="body-lead-in ">Login below!</div>
+                <div class="row" style="margin-top:20px">
+                <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+                   <form action="signin.php" method="post">
+
+
+
+
+                        <fieldset>
+                            <hr class="colorgraph">
+                            <div class="form-group">
+                                <input type="text" name="loginName" id="email" class="form-control input-lg" placeholder="UserName" value="">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="pass" id="password" class="form-control input-lg" placeholder="Password" value="">
+                            </div>
+                            <hr class="colorgraph">
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <button name="submit" class="btn btn-lg btn-success btn-block" type="submit" value="Login" style="background-color:#007C87">Login</button>
+                                   
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <button name="signup" class="btn btn-lg btn-success btn-block" value="Register" style="background-color: #fed136" type="button" onclick="window.location='create.html';">Register</button>
+                                  
+                                </div>
+                            </div>
+                        </fieldset>
+</form>
+                </div>               
+            </div>
         </div>
     </header>
                <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>

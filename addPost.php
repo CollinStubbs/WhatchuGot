@@ -1,8 +1,10 @@
+<?php require_once("session.php"); ?>
+<?php require_once("func.php"); ?>
+<?php check_logged_in_student(); ?>
 <?php
 	$message = "";
 	// form is submitted
 	if(isset($_POST['submit'])){
-		$name = "andrew";
 		$category = $_POST["category"];
 		$title = $_POST["title"];
 		$description = $_POST["description"];
@@ -11,8 +13,10 @@
 		$image_name="";
 		if (isset($_FILES['image']['tmp_name'])) {
 			$file=$_FILES['image']['tmp_name'];
-			$image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
- 			$image_name= addslashes($_FILES['image']['name']);
+			if(!empty($_FILES['image']['tmp_name'])){
+				$image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
+ 				$image_name= addslashes($_FILES['image']['name']);
+			}
 		}
 		if (!isset($title) || empty($title)){
 			$message = "Please enter title <br />";
@@ -23,21 +27,7 @@
 		}
 		else 
 		{
-			date_default_timezone_set('US/Eastern');
-  			$currtime = time();
-  			$datedb = date('Y-m-d H:i:s', $currtime);
-			require_once("cred.php");
-			$query = "Insert INTO posts (postid, username, date, categoryId, title, 		description, adminStatus, status, image, imageName)
-			VALUES ('','{$name}','{$datedb}', '{$category}','{$title}','{$description}', 'Pending', 'available', '{$image}','{$image_name}')";
-			$result = mysql_query($query);
-			if (!$result){
-				die("Database query failed.");
-			}
-			else{
-				$message = "Ad has been succesfully sent";
-				// close the database connection
-				mysql_close($conn);
-			}
+			$message = addPost($_SESSION["user_id"], $category, $title, $description, $image, $image_name);
 		}
 	}
 	else
