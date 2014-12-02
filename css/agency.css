@@ -311,6 +311,21 @@ header.registerpage {
     background-repeat: repeat-x;
     
 }
+header.adminpage {
+    text-align: center;
+    color: #fff;
+    padding-top: 140px;
+    background-attachment: scroll;
+    background-image: url(../img/introo3.jpg);
+    -webkit-background-size: cover; /* For WebKit*/
+    -moz-background-size: cover;    /* Mozilla*/
+    -o-background-size: cover;      /* Opera*/
+    background-size: cover;         /* Generic*/
+
+    background-position: center center;
+    background-repeat: repeat-x;
+    
+}
 
 
 header.aboutpage {
@@ -357,6 +372,15 @@ header .intro-text {
 header .about-text {
     padding-top: 140px;
     
+}
+
+.admintext {
+   width: 100%;
+    padding: 10px;
+    border-radius: 0.6em 0.6em 0.6em 0.6em;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    background-color: #f9fae5;
+    color: #000;
 }
 header .contact-text {
  padding-top: 140px;  
