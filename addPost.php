@@ -96,17 +96,17 @@
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
-                    <li>
-                        <a class="page-scroll" href="login.php">Log-in</a>
+                 	<li>
+                        <a class="page-scroll" href="AdminMessages.php">Messages</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="about.html">About</a>
+                        <a class="page-scroll" href="addPost.php">Posts</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="team.html">Team</a>
+                        <a class="page-scroll" href="contact.html">Accounts</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="contact.php">Contact</a>
+                        <a class="page-scroll" href="logout.php">Logout</a>
                     </li>
                 </ul>
             </div>
