@@ -2,55 +2,115 @@
 <?php require_once("func.php"); ?>
 <?php check_logged_in_student(); ?>
 <?php
-	$message = "";
-	// form is submitted
-	if(isset($_POST['submit'])){
-		$category = $_POST["category"];
-		$title = $_POST["title"];
-		$description = $_POST["description"];
-		$file = "";
-		$image = "";
-		$image_name="";
-		if (isset($_FILES['image']['tmp_name'])) {
-			$file=$_FILES['image']['tmp_name'];
-			if(!empty($_FILES['image']['tmp_name'])){
-				$image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
- 				$image_name= addslashes($_FILES['image']['name']);
-			}
-		}
-		if (!isset($title) || empty($title)){
-			$message = "Please enter title <br />";
-			
-		}
-		else if (!isset($description) || empty($description)){
-			$message .= "Please write description<br />";
-		}
-		else 
-		{
-			$message = addPost($_SESSION["user_id"], $category, $title, $description, $image, $image_name);
-		}
-	}
-	else
-	{
-		$message = "Please Enter all the fields";
-	}
+    $message = "";
+    // form is submitted
+    if(isset($_POST['submit'])){
+        $category = $_POST["category"];
+        $title = $_POST["title"];
+        $description = $_POST["description"];
+        $file = "";
+        $image = "";
+        $image_name="";
+        if (isset($_FILES['image']['tmp_name'])) {
+            $file=$_FILES['image']['tmp_name'];
+            if(!empty($_FILES['image']['tmp_name'])){
+                $image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
+                $image_name= addslashes($_FILES['image']['name']);
+            }
+        }
+        if (!isset($title) || empty($title)){
+            $message = "Please enter title <br />";
+            
+        }
+        else if (!isset($description) || empty($description)){
+            $message .= "Please write description<br />";
+        }
+        else 
+        {
+            $message = addPost($_SESSION["user_id"], $category, $title, $description, $image, $image_name);
+        }
+    }
+    else
+    {
+        $message = "Please fill-in all the fields.";
+    }
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
-</head>
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Final Proj.</title>
+        <meta name="description" content="Final Project">
+        <link rel="stylesheet" href="css.css">
+        
+        <!-- Bootstrap Core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
 
-<body>
-<?php 
-	echo $message ;
-?>
+        <!-- Custom CSS -->
+        <link href="css/agency.css" rel="stylesheet">
+
+        <!-- Custom Fonts -->
+        <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+        <link href='http://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+    </head>
+        <body>
+            <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="index.html">Whatchu Got?</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="register.html">Log-in</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="about.html">About</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="team.html">Team</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Header -->
+    <header class="aboutpage">
+        <div class="container">
+            <div class="about-text">
+                <div class="body-lead-in"><?php 
+    echo $message ;
+?></div>
+</div>
 <form action="addPost.php" method="post" enctype="multipart/form-data" name="addroom">
  Category<br />
- <select name="category" size="1">
- 	<option value="0"></option>
- 	<option value="1">Textbooks</option>
+ <select name="category" style="color:#000;" size="1">
+    <option value="0"></option>
+    <option value="1">Textbooks</option>
     <option value="2">Media</option>
     <option value="3">Rentals</option>
     <option value="4">Events / Meetups</option>
@@ -62,12 +122,30 @@
     <option value="10">Other</option>
  </select><br />
  Title<br />
- <input name="title" type="text" /><br />
+ <input name="title" type="text" style="color:#000;"/><br />
  Description<br />
  <textarea class="form-control" name="description" rows="6" cols="50" value=""></textarea><br>
  Select Image: <br />
  <input type="file" name="image"><br /><br />
 <button name="submit" type="submit"  style="background-color:#007C87">Submit</button>
-</form>
-</body>
+</form>     
+        </div>
+    </header>
+          
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/cbpAnimatedHeader.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/agency.js"></script>
+ </body>
 </html>
+
