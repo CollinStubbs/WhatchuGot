@@ -29,7 +29,7 @@ function try_logging_in($user, $pass){
 				$_SESSION["user_id"] = $user;
 				$_SESSION["user_type"] = "STUDENT";
 				$_SESSION["user_uni"] = $row['university'];
-				redirect_to_page("addPost.php");
+				redirect_to_page("userdash.html");
 			}
 		  }
 		  else
