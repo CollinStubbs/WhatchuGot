@@ -65,9 +65,9 @@
     </nav>
 
     <!-- Header -->
-    <header class="adminpage">
+    <header class="aboutpage">
         <div class="container">
-            <div class="admintext">
+            <div class="about-text">
             <?php
 			$msgTable = getContactMessage();
 
@@ -79,7 +79,8 @@
     <div>
     	
     </div>
-               
+               <!-- jQuery -->
+    <script src="js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
@@ -97,7 +98,3 @@
     <script src="js/agency.js"></script>
  </body>
 </html>
-<?php
-	// close the database connection
-	mysql_close($conn);
-?>

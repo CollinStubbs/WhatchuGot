@@ -29,7 +29,7 @@ function try_logging_in($user, $pass){
 				$_SESSION["user_id"] = $user;
 				$_SESSION["user_type"] = "STUDENT";
 				$_SESSION["user_uni"] = $row['university'];
-				redirect_to_page("userdash.html");
+				redirect_to_page("addPost.php");
 			}
 		  }
 		  else
@@ -111,35 +111,34 @@ if (!logged_in()){
 		redirect_to_page("login.php");
 	}
 }
-function addPost($name, $category, $title, $description, $image, $image_name){
-	// code goes here
-			//addPost($name, $category, $title, $description, $image, $image_name);
+function addPost($name, $category, $title, $description, $imageProperties, $imageData){
 			$message = "";
 			date_default_timezone_set('US/Eastern');
 			$currtime = time();
 			$datedb = date('Y-m-d H:i:s', $currtime);
 			require_once("cred.php");
-			$statement = $conn->prepare("INSERT INTO posts(username, date, categoryId, title, description, adminStatus, status, image, imageName, university) values (:name, :date, :category, :title, :description, :adminStatus, :status, :image, :imageName, :university)");
-	$statement->bindValue(":name", $name);
-	$statement->bindValue(":date", $datedb);
-	$statement->bindValue(":category", $category); 
-	$statement->bindValue(":title", $title);
-	$statement->bindValue(":description", $description);
-	$statement->bindValue(":adminStatus", "Pending"); 
-	$statement->bindValue(":status", "available");
-	$statement->bindValue(":image", $image);
-	$statement->bindValue(":imageName", $image_name);
-	$statement->bindValue(":university", $_SESSION["user_uni"]); 
-    $statement->execute();
-	$numRowsAffected = $statement->rowCount();
-		if ($numRowsAffected == 0){
-			$message = "Database statment failed.";
-		}
-		else{
-			$message = "Ad has been succesfully sent";
-		}
-	require("closeDatabase.php");
-	return $message;
+			if ($imageData)
+			$statement = $conn->prepare("INSERT INTO posts(username, date, categoryId, title, description, adminStatus, status, university, imageType, imageData) values (:name, :date, :category, :title, :description, :adminStatus, :status, :university, '{$imageProperties['mime']}', '{$imageData}')");
+			else
+			$statement = $conn->prepare("INSERT INTO posts(username, date, categoryId, title, description, adminStatus, status, university) values (:name, :date, :category, :title, :description, :adminStatus, :status, :university)");
+			$statement->bindValue(":name", $name);
+			$statement->bindValue(":date", $datedb);
+			$statement->bindValue(":category", $category); 
+			$statement->bindValue(":title", $title);
+			$statement->bindValue(":description", $description);
+			$statement->bindValue(":adminStatus", "Pending"); 
+			$statement->bindValue(":status", "Available");
+			$statement->bindValue(":university", $_SESSION["user_uni"]);
+    		$statement->execute();
+			$numRowsAffected = $statement->rowCount();
+			if ($numRowsAffected == 0){
+				$message = "Database statment failed.";
+			}
+			else{
+				$message = "Ad has been succesfully sent";
+			}
+			require("closeDatabase.php");
+			return $message;
 }
 
 function getContactMessage(){
@@ -153,7 +152,7 @@ function getContactMessage(){
 	  }
 	  else{
 		  
-		  $msgTable = "<table width=\"100%\" border=\"1\">";
+		  $msgTable = "<table width=\"80%\" border=\"1\">";
 			$msgTable .= "<tr><th>Date</th><th>Full Name</th><th>Email</th>";
 			$msgTable .= "<th>Message</th></tr>";
 			for ($i = 0; $i <$statement->rowCount(); $i++) {
@@ -162,6 +161,7 @@ function getContactMessage(){
 				$msgTable .= "<td>" . $row["fullName"] . "</td>";
 				$msgTable .= "<td>" . $row["email"] . "</td>";
 				$msgTable .= "<td>" . $row["message"] . "</td>";
+				$msgTable .= "<td><a href=\"deleteMessage.php?id=" . $row["contactId"]. "\" onclick=\"return confirm('Are you sure?')\">Delete</a></td>"  ;
 				$msgTable .= "</tr>";
 			}
 			$msgTable .= "</table>";
@@ -180,7 +180,7 @@ function getAllPost(){
 	  }
 	  else{
 		  
-		  $msgTable = "<table width=\"100%\" border=\"1\">";
+		  $msgTable = "<table width=\"80%\" border=\"1\">";
 			$msgTable .= "<tr><th>Post ID</th><th>Title</th><th>Description</th><th>University</th><th>Date</th><th>Image</th>";
 			for ($i = 0; $i <$statement->rowCount(); $i++) {
 				$row = $statement->fetch();
@@ -189,8 +189,7 @@ function getAllPost(){
 				$msgTable .= "<td>" . $row["description"] . "</td>";
 				$msgTable .= "<td>" . $row["university"] . "</td>";
 				$msgTable .= "<td>" . $row["date"] . "</td>";
-				$decodedImage = base64_decode($row["Image"]);
-				$msgTable .= "<td><img src=\"showPost.php?id=".$row["image"]."\" width='128px' height='128px' /></td>";
+				$msgTable .= "<td><img src=\"showPost.php?id=" .$row["postid"] ."\"width='128' height='128' /></td>";
 				$msgTable .= "</tr>";
 			}
 			$msgTable .= "</table>";
@@ -243,3 +242,4 @@ function sendMessageToAdmin($name, $email, $comment, $datedb){
 }
 
 ?>
+

@@ -8,14 +8,13 @@
         $category = $_POST["category"];
         $title = $_POST["title"];
         $description = $_POST["description"];
-        $file = "";
         $image = "";
-        $image_name="";
+        $imageProperties="";
         if (isset($_FILES['image']['tmp_name'])) {
             $file=$_FILES['image']['tmp_name'];
             if(!empty($_FILES['image']['tmp_name'])){
                 $image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
-                $image_name= addslashes($_FILES['image']['name']);
+                $imageProperties = getimageSize($_FILES['image']['tmp_name']);
             }
         }
         if (!isset($title) || empty($title)){
@@ -27,7 +26,7 @@
         }
         else 
         {
-            $message = addPost($_SESSION["user_id"], $category, $title, $description, $image, $image_name);
+            $message = addPost($_SESSION["user_id"], $category, $title, $description, $imageProperties, $image);
              $oauth_consumer_key="VPyir6ReB00Q2GiPYqHMQOox8";
              $oauth_consumer_secret="OCB8jxfUufPDUAucDPNVNFBLECwAcCy8VyC9HrlpfkzXGimP3G";
              $oauth_nonce="279307c4a506cd89d9ae823e29cfd0a3";
