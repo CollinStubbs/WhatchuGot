@@ -35,7 +35,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="login.html">Whatchu Got?</a>
+                <a class="navbar-brand page-scroll" href="index.html">Whatchu Got?</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -45,7 +45,7 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="register.html">Log-in</a>
+                        <a class="page-scroll" href="login.php">Log-in</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="about.html">About</a>
@@ -54,7 +54,7 @@
                         <a class="page-scroll" href="team.html">Team</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="contact.html">Contact</a>
+                        <a class="page-scroll" href="contact.php">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -89,7 +89,7 @@
                                    
                                 </div>
                                 <div class="col-xs-6 col-sm-6 col-md-6">
-                                    <button name="signup" class="btn btn-lg btn-success btn-block" value="Register" style="background-color: #fed136" type="button" onclick="window.location='create.html';">Register</button>
+                                    <button name="signup" class="btn btn-lg btn-success btn-block" value="Register" style="background-color: #fed136" type="button" onclick="window.location='register.php';">Register</button>
                                   
                                 </div>
                             </div>

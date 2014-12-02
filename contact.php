@@ -81,7 +81,7 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="register.html">Log-in</a>
+                        <a class="page-scroll" href="login.php">Log-in</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="about.html">About</a>
@@ -90,7 +90,7 @@
                         <a class="page-scroll" href="team.html">Team</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="contact.html">Contact</a>
+                        <a class="page-scroll" href="contact.php">Contact</a>
                     </li>
                 </ul>
             </div>
