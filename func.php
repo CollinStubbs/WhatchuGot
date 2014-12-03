@@ -152,7 +152,7 @@ function getContactMessage(){
 	  }
 	  else{
 		  
-		  $msgTable = "<table width=\"80%\" border=\"1\">";
+		  $msgTable = "<table width=\"100%\" border=\"1\">";
 			$msgTable .= "<tr><th>Date</th><th>Full Name</th><th>Email</th>";
 			$msgTable .= "<th>Message</th></tr>";
 			for ($i = 0; $i <$statement->rowCount(); $i++) {
@@ -180,7 +180,7 @@ function getAllPost(){
 	  }
 	  else{
 		  
-		  $msgTable = "<table width=\"80%\" border=\"1\">";
+		  $msgTable = "<table width=\"100%\" border=\"1\">";
 			$msgTable .= "<tr><th>Post ID</th><th>Title</th><th>Description</th><th>University</th><th>Date</th><th>Image</th>";
 			for ($i = 0; $i <$statement->rowCount(); $i++) {
 				$row = $statement->fetch();
