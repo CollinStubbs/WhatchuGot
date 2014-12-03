@@ -42,7 +42,7 @@
             $cb->setToken("2901661539-ZEZN6Pk1UE3lNaGlGi2S3JY1GkFpGzeaJKnRO0E", "vhPXWnMdpIexbq5sDGhqkWax5aNFaGEWqnLRQmI15e009");
 
             $params = array(
-              'status' => 'There is a new post! Check it out!'
+              'status' => 'NEW POST ALERT: '. $title
             );
             $reply = $cb->statuses_update($params);
         }
@@ -103,7 +103,7 @@
                         <a class="page-scroll" href="addPost.php">Posts</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="contact.html">Accounts</a>
+                        <a class="page-scroll" href="contact.php">Accounts</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="logout.php">Logout</a>
