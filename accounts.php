@@ -1,12 +1,15 @@
+<?php require_once("session.php"); ?>
+<?php require_once("func.php"); ?>
+<?php $links=check_logged_in_admin(); ?>
+
 <!DOCTYPE html>
 <html>
     
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Final Proj.</title>
+        <title>Accounts</title>
         <meta name="description" content="Final Project">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css.css">
         
         <!-- Bootstrap Core CSS -->
@@ -14,6 +17,7 @@
 
         <!-- Custom CSS -->
         <link href="css/agency.css" rel="stylesheet">
+         <link rel="stylesheet" href="css/whatchugot.css">
 
         <!-- Custom Fonts -->
         <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -34,7 +38,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="login.html">Whatchu Got?</a>
+                <a class="navbar-brand page-scroll" href="index.html">Whatchu Got?</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -43,17 +47,9 @@
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
+                    <?php echo $links ?>
                     <li>
-                        <a class="page-scroll" href="register.html">Log-in</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="about.html">About</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="team.html">Team</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="contact.html">Contact</a>
+                        <a class="page-scroll" href="logout.php">Log-out</a>
                     </li>
                 </ul>
             </div>
@@ -61,25 +57,22 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
-<!-- Header -->
-    <header class="aboutpage">
-        <div class="container">
-            <div class="contact-text">
-                <div class="body-lead-in">Fill out the information below to register with us!</div>
-                </div>
-               <form name="input" action="nothingyet.asp" method="get">
-                   <label><input type="text" class="form-control input-lg ContactInput" name="username" placeholder="Username"></label><br><br>
-                   <label><input class="form-control input-lg ContactInput" type="text" name="fname" placeholder="First Name"></label><br><br>
-                   <label><input type="text" class="form-control input-lg ContactInput" name="lname" placeholder="Last Name"></label><br><br>
-                   
-                   <label><input type="text" class="form-control input-lg ContactInput" name="email" placeholder="Email Address"></label><br><br>
-                   <label><input type="text" class="form-control input-lg ContactInput" name="password" placeholder="Password"></label><br><br>                   
-                   <button type="submit" class="btn btn-lg btn-success" style="background-color:#007C87">Submit</button>
-                </form>
-                
-            
+
+    <!-- Header -->
+    <header class="adminpage">
+    	<a id="addPost" href="register.php">Add User</a>
+        <div class="container" style="height:80%;">
+            <div class="viewtext">
+            <?php
+			$msgTable = getAllAccounts();
+			echo $msgTable;
+			?>
+            </div>
         </div>
     </header>
+    <div>
+    	
+    </div>
                <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
@@ -99,4 +92,3 @@
     <script src="js/agency.js"></script>
  </body>
 </html>
-

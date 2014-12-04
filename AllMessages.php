@@ -1,10 +1,14 @@
+<?php require_once("session.php"); ?>
+<?php require_once("func.php"); ?>
+<?php $links=check_logged_in_student(); ?>
+
 <!DOCTYPE html>
 <html>
     
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Final Proj.</title>
+        <title>Student Messages</title>
         <meta name="description" content="Final Project">
         <link rel="stylesheet" href="css.css">
         
@@ -33,7 +37,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="index.html">Whatchu Got?</a>
+                <a class="navbar-brand page-scroll" href="index.php">Whatchu Got?</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -42,23 +46,9 @@
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
+                    <?php echo $links ?>
                     <li>
                         <a class="page-scroll" href="logout.php">Log-out</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="about.html">About</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="team.html">Team</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="contact.php">Contact</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="addPost.php">Create Post</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="viewPost.php">View Posts</a>
                     </li>
                 </ul>
             </div>
@@ -68,15 +58,22 @@
     </nav>
 
     <!-- Header -->
-    <header class="aboutpage">
-        <div class="container">
-            <div class="about-text">
-                <div class="body-lead-in" style="font-size: 80px; padding-top: 100px;">Welcome!</div>
+    <header class="adminpage">
+        <div class="container" style="height:80%;">
+            <div class="viewtext">
+            <?php
+			$msgTable = getMessageByUserName($_SESSION["user_id"]);
+			echo $msgTable;
+			?>
             </div>
-
         </div>
     </header>
-          
+    <div>
+    	
+    </div>
+               <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 
@@ -93,4 +90,3 @@
     <script src="js/agency.js"></script>
  </body>
 </html>
-

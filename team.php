@@ -1,10 +1,12 @@
+<?php require_once("session.php"); ?>
+<?php require("func.php"); ?>
 <!DOCTYPE html>
 <html>
     
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Final Proj.</title>
+        <title>Team</title>
         <meta name="description" content="Final Project"><meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css.css">
         
@@ -33,7 +35,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="index.html">Whatchu Got?</a>
+                <a class="navbar-brand page-scroll" href="index.php">Whatchu Got?</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -42,18 +44,10 @@
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
-                   <li>
-                        <a class="page-scroll" href="login.php">Log-in</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="about.html">About</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="team.html">Team</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="contact.php">Contact</a>
-                    </li>
+                   <?php 
+						$links = navigationLinks(); 
+						echo $links;
+					?>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -72,28 +66,24 @@
             <div class="row">
                 <div class="col-sm-4">
                     <div class="team-member">
-                        <img src="img/team/profilecollin.jpg" class="pic img-responsive img-circle" alt="" height="128" width="128">
+                        <img src="img/collin.jpg" class="img-responsive img-circle" alt="" width="128" height="128">
                         <h4>Collin Stubbs</h4>
-                        <p class="text-muted">User Experience Developer</p>
+                        <p class="text-muted"></p>
                         <ul class="list-inline social-buttons">
-                            <li><a href="#"><i class="rotate fa fa-twitter"></i></a>
+                            <li><a href="https://twitter.com/collintstubbs"><i class="rotate fa fa-twitter"></i></a>
                             </li>
-                            <li><a href="#"><i class="rotate fa fa-github"></i></a>
-                            </li>
-                            <li><a href="#"><i class="rotate fa fa-linkedin"></i></a>
+                            <li><a href="https://ca.linkedin.com/in/collintstubbs"><i class="rotate fa fa-linkedin"></i></a>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="team-member">
-                        <img src="img/team/profileandrew.jpg" class="pic img-responsive img-circle" alt="" height="128" width="128">
+                        <img src="img/andrew.jpg" class="img-responsive img-circle" alt="" width="128" height="128">
                         <h4>Andrew Gulla</h4>
-                        <p class="text-muted">Full-Stack Developer</p>
+                        <p class="text-muted"></p>
                         <ul class="list-inline social-buttons">
                             <li><a href="#"><i class="rotate fa fa-twitter"></i></a>
-                            </li>
-                            <li><a href="#"><i class="rotate fa fa-github"></i></a>
                             </li>
                             <li><a href="#"><i class="rotate fa fa-linkedin"></i></a>
                             </li>
@@ -102,21 +92,17 @@
                 </div>
                 <div class="col-sm-4">
                     <div class="team-member">
-                        <img src="img/team/profile1.jpg" class="pic img-responsive img-circle" alt="" height="128" width="128">
+                        <img src="img/iyosias.jpg" class="img-responsive img-circle" alt="" width="128" height="128">
                         <h4>Iyosias Tessema</h4>
-                        <p class="text-muted">Back End Developer</p>
+                        <p class="text-muted"></p>
                         <ul class="list-inline social-buttons">
-                            <li><a href="#"><i class="rotate fa fa-twitter"></i></a>
-                            </li>
-                            <li><a href="#"><i class="rotate fa fa-github"></i></a>
-                            </li>
-                            <li><a href="#"><i class="rotate fa fa-linkedin"></i></a>
+                            <li><a href="http://ca.linkedin.com/pub/iyosias-tessema/51/a01/643"><i class="rotate fa fa-linkedin"></i></a>
                             </li>
                         </ul>
                     </div>
                 </div>
+                <br/><br /></div><br />
             </div>
-            <br><br>
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
                     <p class="large text-muted">Through the help of lots of energy drinks and the fear of doing bad on this project, we managed to get it together and create this wonderful website!</p>

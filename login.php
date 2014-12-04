@@ -1,11 +1,12 @@
-
+<?php require_once("session.php"); ?>
+<?php require("func.php"); ?>
 <!DOCTYPE html>
 <html>
     
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Final Proj.</title>
+        <title>login.php</title>
         <meta name="description" content="Final Project">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css.css">
@@ -35,7 +36,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="index.html">Whatchu Got?</a>
+                <a class="navbar-brand page-scroll" href="index.php">Whatchu Got?</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -44,18 +45,10 @@
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
-                    <li>
-                        <a class="page-scroll" href="login.php">Log-in</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="about.html">About</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="team.html">Team</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="contact.php">Contact</a>
-                    </li>
+                       <?php 
+						$links = navigationLinks(); 
+						echo $links;
+					?>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

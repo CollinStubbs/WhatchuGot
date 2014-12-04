@@ -1,50 +1,14 @@
 <?php require_once("session.php"); ?>
 <?php require("func.php"); ?>
-<?php
-	$message = "";
-	// form is submitted
-	if(isset($_POST['submit'])){
-		$name = $_POST["name"];
-		$email = $_POST["email"];
-		$comment = $_POST["comment"];
-		if (!isset($name) || empty($name)){
-			$message = "Please enter name <br />";
-		}
-		else if (!isset($email) || empty($email)){
-			$message .= "Email Can not be empty<br />";
-		}
-		else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-			$message .= "Invalid email format <br />"; 
-		}
-		else if (!isset($comment) || empty($comment)){
-			$message .= "Please enter a message <br />";
-		}
-		else 
-		{
-			date_default_timezone_set('US/Eastern');
-  			$currtime = time();
-  			$datedb = date('Y-m-d H:i:s', $currtime);
-		    $message = sendMessageToAdmin($name, $email, $comment, $datedb);
-			
-		}
-	}
-	else
-	{
-		$name = "";
-		$email= "";
-		$comment = "";
-		$message = "Please fill-in all the fields to send a message!";
-	}
-?>
+
 <!DOCTYPE html>
 <html>
     
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Contact Form</title>
+        <title>WhatchuGot?</title>
         <meta name="description" content="Final Project">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css.css">
         
         <!-- Bootstrap Core CSS -->
@@ -59,7 +23,7 @@
         <link href='http://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-        
+    </head>
         <body>
             <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -91,26 +55,64 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
-<!-- Header -->
-    <header class="aboutpage">
+        
+    <!-- Header -->
+    <header>
         <div class="container">
-            <div class="contact-text">
-                <div class="body-lead-in">
-                    <?php 
-                        echo $message ;
-                    ?></div>
+            <div class="intro-text">
+                <div class="intro-lead-in">Buying or Selling?</div>
+                <div class="intro-heading">Select Your Campus</div>
                 </div>
-               <form action="contact.php" method="post">
-                <label>Full Name<input class="form-control input-lg ContactInput" type="text" name="name" value="<?php echo $name; ?>" ></label><br><br>
-                <label>Email<input type="text" class="form-control input-lg ContactInput" name="email" value="<?php echo $email; ?>"></label><br><br>
-                Message : <textarea class="form-control" name="comment" rows="6" cols="50" value="<?php echo $comment; ?>"></textarea><br>
-                <button name="submit" type="submit" class="btn btn-lg btn-success" style="background-color:#007C87">Submit</button>
-                </form>
-                
-            
+               <div class="btn-group">
+                   <button type="button" class="btn btn-xl dropdown-toggle" 
+                      data-toggle="dropdown">
+                      Durham <span class="caret"></span>
+                   </button>
+                   <ul class="dropdown-menu button-xl" role="menu">
+                      <li><a href="viewPost.php?id=uoit">UOIT - North</a></li>
+                      <li><a href="viewPost.php">UOIT - Downtown</a></li>
+                      <li><a href="viewPost.php">Trent University</a></li>
+                      <li class="divider"></li>
+                      <li><a href="viewPost.php">Durham College - Oshawa</a></li>
+                       <li><a href="viewPost.php">Durham College - Whitby</a></li>
+                   </ul>
+                </div>
+                <div class="btn-group">
+                   <button type="button" class="btn btn-xl dropdown-toggle" 
+                      data-toggle="dropdown">
+                      Toronto <span class="caret"></span>
+                   </button>
+                   <ul class="dropdown-menu" role="menu">
+                      <li><a href="viewPost.php">UofT - Scarborough</a></li>
+                      <li><a href="viewPost.php">UofT - Downtown</a></li>
+                      <li><a href="viewPost.php">UofT - St. George</a></li>
+                       <li><a href="viewPost.php">Ryerson</a></li>
+                      <li class="divider"></li>
+                      <li><a href="viewPost.php">George Brown</a></li>
+                       <li><a href="viewPost.php">Centennial</a></li>
+                   </ul>
+                </div>
+                <div class="btn-group">
+                   <button type="button" class="btn btn-xl dropdown-toggle" 
+                      data-toggle="dropdown">
+                      Other <span class="caret"></span>
+                   </button>
+                   <ul class="dropdown-menu" role="menu">
+                      <li><a href="viewPost.php">Western University</a></li>
+                      <li><a href="viewPost.php">York University</a></li>
+                      <li><a href="viewPost.php">Mcmaster</a></li>
+                       <li><a href="viewPost.php">Queens</a></li>
+                       <li><a href="viewPost.php">Brock</a></li>
+                      <li class="divider"></li>
+                      <li><a href="viewPost.php">Mohawk College</a></li>
+                       <li><a href="viewPost.php">Seneca</a></li>
+                   </ul>
+                </div>
         </div>
     </header>
-      
+               <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 

@@ -1,13 +1,14 @@
 <?php require_once("session.php"); ?>
 <?php require("func.php"); ?>
-<?php check_logged_in_admin(); ?>
+<?php $links=check_logged_in_admin(); ?>
+
 <!DOCTYPE html>
 <html>
     
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Admin Control Panel</title>
+        <title>Admin Message</title>
         <meta name="description" content="Final Project">
         <link rel="stylesheet" href="css.css">
         
@@ -36,7 +37,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="index.html">Whatchu Got?</a>
+                <a class="navbar-brand page-scroll" href="index.php">Whatchu Got?</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -45,17 +46,9 @@
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
+                    <?php echo $links ?>
                     <li>
-                        <a class="page-scroll" href="AdminMessages.php">Messages</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="addPost.php">Posts</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="contact.html">Accounts</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="logout.php">Logout</a>
+                        <a class="page-scroll" href="logout.php">Log-out</a>
                     </li>
                 </ul>
             </div>
@@ -65,14 +58,15 @@
     </nav>
 
     <!-- Header -->
-    <header class="aboutpage">
-        <div class="container">
-            <div class="about-text">
+    <header class="adminpage">
+        <div class="container" style="height:80%;">
+            <div class="viewtext">
             <?php
 			$msgTable = getContactMessage();
 
 			echo $msgTable;
 			?>
+            
             </div>
         </div>
     </header>

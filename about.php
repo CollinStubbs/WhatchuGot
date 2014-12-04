@@ -1,12 +1,14 @@
+<?php require_once("session.php"); ?>
+<?php require("func.php"); ?>
+
 <!DOCTYPE html>
 <html>
     
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Final Proj.</title>
+        <title>About Us</title>
         <meta name="description" content="Final Project">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css.css">
         
         <!-- Bootstrap Core CSS -->
@@ -34,7 +36,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="login.html">Whatchu Got?</a>
+                <a class="navbar-brand page-scroll" href="index.php">Whatchu Got?</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -43,53 +45,25 @@
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
-                    <li>
-                        <a class="page-scroll" href="register.html">Log-in</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="about.html">About</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="team.html">Team</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="contact.html">Contact</a>
-                    </li>
+                    <?php 
+						$links = navigationLinks(); 
+						echo $links;
+					?>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container-fluid -->
     </nav>
-<!-- Header -->
-    <header class="registerpage">
+
+    <!-- Header -->
+    <header class="aboutpage">
         <div class="container">
-            <div class="logtext">
-                <div class="body-lead-in ">Login below!</div>
-                <div class="row" style="margin-top:20px">
-                <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-                    <form role="form">
-                        <fieldset>
-                            <hr class="colorgraph">
-                            <div class="form-group">
-                                <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address">
-                            </div>
-                            <div class="form-group">
-                                <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password">
-                            </div>
-                            <hr class="colorgraph">
-                            <div class="row">
-                                <div class="col-xs-6 col-sm-6 col-md-6">
-                                    <input type="submit" class="btn btn-lg btn-success btn-block" value="Login" style="background-color:#007C87">
-                                </div>
-                                <div class="col-xs-6 col-sm-6 col-md-6">
-                                    <a href="create.html" class="btn btn-lg btn-success btn-block" value="Register" style="background-color: #fed136">Register</a>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </form>
-                </div>               
-            </div>
+            <div class="about-text">
+                <div class="body-lead-in">Whatchu Got is a campus classifieds website. It's a place for students to buy and sell things specific to their campus, on their campus. Whether textbooks, pencils, services, or excellently written notes if it's related to your campus then feel free to post it here! </div>
+                </div>
+               <img class=" logoabout" src="img/transbeaver.png" height="380" width="300">
+                <p class="logotext box_textshadow">Whatchu Got?</p>        
         </div>
     </header>
                <!-- jQuery -->

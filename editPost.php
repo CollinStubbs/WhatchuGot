@@ -1,13 +1,24 @@
 <?php require_once("session.php"); ?>
 <?php require("func.php"); ?>
 <?php $links=check_logged_in_student(); ?>
+<?php $post_id = $_GET["id"]; ?>
 <?php
-	$message = "";
+	$posts = null;
+	if ($_GET["id"] && $_GET["id"]!= 0){
+		$post_id = $_GET["id"];
+		$posts = getPostById($post_id);	
+	}
+    $message = "";
     // form is submitted
     if(isset($_POST['submit'])){
+		$post_id = $_GET["id"];
         $category = $_POST["category"];
         $title = $_POST["title"];
+		$postStatus = $_POST["post_status"];
         $description = $_POST["description"];
+		if ($_SESSION["user_type"] == "ADMIN"){
+			$adminStatus = $_POST["confirmation"];
+		}
         $image = "";
         $imageProperties="";
         if (isset($_FILES['image']['tmp_name'])) {
@@ -24,21 +35,15 @@
         else if (!isset($description) || empty($description)){
             $message .= "Please write description<br />";
         }
-		else if ($category == 0){
-            $message .= "Please Select Category<br />";
-        }
         else 
         {
-			
-            $message = addPost($_SESSION["user_id"], $category, $title, $description, $imageProperties, $image);
-			$title = "";
-			$description = "";  
+            	$message = updatePost($post_id, $category, $title, $description, $postStatus, $adminStatus);
+				redirect_to_page("posts.php");
+             
         }
     }
     else
     {
-		$title = "";
-		$description = "";
         $message = "Please fill-in all the fields.";
     }
 ?>
@@ -48,7 +53,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Add Post</title>
+        <title>Edit Post</title>
         <meta name="description" content="Final Project">
         <link rel="stylesheet" href="css.css">
         
@@ -105,28 +110,49 @@
     echo $message ;
 ?></div>
 </div>
-<form action="addPost.php" method="post" enctype="multipart/form-data" name="addroom">
+<form action="editPost.php?id=<?php echo $posts["postid"] ?>" method="post" enctype="multipart/form-data" name="addroom">
  Category<br />
  <select name="category" style="color:#000;" size="1">
-    <option value="0"></option>
-    <option value="1">Textbooks</option>
-    <option value="2">Media</option>
-    <option value="3">Rentals</option>
-    <option value="4">Events / Meetups</option>
-    <option value="5">Tutoring</option>
-    <option value="6">Electronics</option>
-    <option value="7">Jobs</option>
-    <option value="8">Furniture</option>
-    <option value="9">Services</option>
-    <option value="10">Other</option>
+ <?php
+ 	$categ = array("Textbooks", "Media", "Rentals", "Events / Meetups", "Tutoring", "Electronics", "Jobs", "Furniture", "Services", "Other"); 
+	for ($i = 1; $i <= 10; $i++){
+		echo "<option value=\"{$i}\" ";
+		if ($posts["categoryId"] == $i)
+			echo "selected ";
+		echo ">{$categ[$i-1]}</option>";
+	}
+ 
+ ?>
  </select><br />
  Title<br />
- <input name="title" type="text" value="<?php echo $title;?>"style="color:#000;"/><br />
+ <input name="title" type="text" value="<?php echo $posts["title"] ?>" style="color:#000;"/><br />
  Description<br />
- <textarea class="form-control" name="description" rows="6" cols="50" value=""><?php echo $description;?></textarea><br>
- Select Image: <br />
- <input type="file" name="image"><br /><br />
-<button name="submit" type="submit"  style="background-color:#007C87">Submit</button>
+ <textarea class="form-control" name="description" rows="6" cols="50"><?php echo $posts["description"] ?></textarea><br>
+<?php 
+	if ($_SESSION["user_type"] == "ADMIN"){
+		$widget1 = "Admin Confirmation<select name=\"confirmation\" style=\"color:#000;\" size=\"1\">";
+        $confirmation = array("Pending", "Confirmed"); 
+        for ($i = 0; $i < 2; $i++){
+        	$widget1 .= "<option value=\"{$confirmation[$i]}\" ";
+            if ($posts["adminStatus"] == $confirmation[$i])
+            	$widget1 .= "selected ";
+            $widget1 .= ">{$confirmation[$i]}</option>";
+        }
+		$widget1 .= "</select><br /><br />";
+		echo $widget1;
+	}
+	$widget2 = "Status <select name=\"post_status\" style=\"color:#000;\" size=\"1\">";
+    $status = array("Available", "Sold"); 
+    for ($i = 0; $i < 2; $i++){
+        $widget2 .= "<option value=\"{$status[$i]}\" ";
+        if ($posts["status"] == $status[$i])
+            $widget2 .= "selected ";
+            $widget2 .= ">{$status[$i]}</option>";
+        }
+	$widget2 .= "</select><br />";
+	echo $widget2;
+?>
+<br /> <br /><button name="submit" type="submit"  style="background-color:#007C87">Update</button>
 </form>     
         </div>
     </header>

@@ -1,17 +1,25 @@
 <?php require_once("session.php"); ?>
 <?php require("func.php"); ?>
+<?php $links=check_logged_in_admin(); ?>
+<?php $account_id = $_GET["id"]; ?>
 
 <?php
+	$accounts = null;
+	if ($_GET["id"]){
+		$account_id = $_GET["id"];
+		$accounts = getAccountByID($account_id);	
+	}
 	$message = "";
 	$foundErrors = 0;
 	// form is submitted
 	if(isset($_POST['submit'])){
-		$name = $_POST["uName"];
-		$uPassword = $_POST["uPassword"];
+		$name = $account_id;
 		$fName = $_POST["fName"];
 		$lName = $_POST["lName"];
 		$uEmail = $_POST["uEmail"];
+		$accountT = $_POST["accountType"];
 		$university = $_POST["uUniversity"];
+		
 		if (!isset($name) || empty($name)){
 			$message = "Please enter userName <br />";
 			$foundErrors = 1;
@@ -32,31 +40,16 @@
 			$message .= "Invalid email format <br />";
 			$foundErrors = 1; 
 		}
-		if (!isset($uPassword) || empty($uPassword)){
-			$message .= "Please enter password<br />";
-			$foundErrors = 1;
-		}
 		if (!isset($university) || empty($university)){
 			$message .= "Please select university <br />";
 			$foundErrors = 1;
 		}
 		if ($foundErrors == 0){
-				require_once("cred.php");
-				$userFound = checkUserNameExist($name);
-				if ($userFound == "true"){
-					$message = "Please enter another userName {$fName} is taken <br />";
-				}
-				else{
-					registerUser($name, $uPassword, $fName, $lName, $uEmail, $university);
-					$message = "{$name} has been successfully registered";
-					$name  = "";
-					$fName = "";
-					$lName = "";
-					$password = "";
-					$uEmail = "";
-				}
-				require("closeDatabase.php");
+				updateUser($account_id, $fName, $lName, $uEmail, $accountT, $university);
+				$message = "{$name} has been successfully updated";
+				redirect_to_page("accounts.php");
 		}
+				require("closeDatabase.php");
 	}
 	else
 	{
@@ -113,10 +106,10 @@
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
-                    <?php 
-						$links = navigationLinks(); 
-						echo $links;
-					?>
+                    <?php echo $links ?>
+                    <li>
+                        <a class="page-scroll" href="logout.php">Log-out</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -131,36 +124,41 @@
                     echo $message ;
                 ?>
                 </div>
-               <form action="register.php" method="post" name="registerationFrom">
-                   <label><input type="text" class="form-control input-lg ContactInput" name="uName" value="<?php echo $name ?>" placeholder="Username"></label><br>
-                   <label><input class="form-control input-lg ContactInput" type="text" name="fName" value="<?php echo $fName ?>" placeholder="First Name"></label><br>
-                   <label><input type="text" class="form-control input-lg ContactInput" name="lName" value="<?php echo $lName ?>" placeholder="Last Name"></label><br>
-                   
-                   <label><input type="text" class="form-control input-lg ContactInput" name="uEmail" value="<?php echo $uEmail ?>" placeholder="Email Address"></label><br>
-                   <label><input type="password" class="form-control input-lg ContactInput" name="uPassword" placeholder="Password"></label><br>                  
-                   
-                   
-                 <select name="uUniversity" style="color: #000;" size="1">
-                        <option value="0"></option>
-                        <option value="Brock">Brock</option>
-                        <option value="Centennial">Centennial</option>
-                        <option value="Durham College - Oshawa">Durham College - Oshawa</option>
-                        <option value="Durham College - Whitby">Durham College - Whitby</option>
-                        <option value="George Brown">George Brown</option>
-                        <option value="McMaster">McMaster</option>
-                        <option value="Queens">Queens</option>  
-                        <option value="Ryerson">Ryerson</option>
-                        <option value="Seneca">Seneca</option>
-                        <option value="Trent University">Trent University</option>
-                        <option value="UofT - Downtown">UofT - Downtown</option>
-                        <option value="UofT - Scarborough">UofT - Scarborough</option>
-                        <option value="UofT - St. George">UofT - St. George</option>
-                        <option value="UOIT-Downtown">UOIT-Downtown</option>
-                        <option value="UOIT-North">UOIT-North</option>
-                        <option value="Western University">Western University</option>
-                        <option value="York University">York University</option>
-                     </select><br /><br />
-                   
+               <form action="editAccount.php?id=<?php echo $accounts["username"] ?>" method="post" name="registerationFrom">
+                   <label>Username<input type="text" class="form-control input-lg ContactInput" name="uName" value="<?php echo $accounts["username"]; ?>" disabled></label><br>
+                   <label>First Name<input class="form-control input-lg ContactInput" type="text" name="fName" value="<?php echo $accounts["fname"]; ?>"></label><br>
+                   <label>Last Name<input type="text" class="form-control input-lg ContactInput" name="lName" value="<?php echo $accounts["lname"]; ?>"></label><br>
+                   <label>Email<input type="text" class="form-control input-lg ContactInput" name="uEmail" value="<?php echo $accounts["email"]; ?>" ></label><br>
+                   <label>Acount Type 
+                   <select name="accountType" style="color:#000;" size="1">
+						<?php 
+                            $confirmation = array("STUDENT", "ADMIN"); 
+                            for ($i = 0; $i < 2; $i++){
+                            echo "<option value=\"{$confirmation[$i]}\" ";
+                            if ($accounts["accountType"] == $confirmation[$i])
+                                echo "selected ";
+                                echo ">{$confirmation[$i]}</option>";
+                            }
+     
+                        ?>
+ 					</select><br />
+                   </label><br> 
+                   <label>University 
+                   <select name="uUniversity" style="color:#000;" size="1">
+						<?php 
+                            $uni = array("", "Brock", "Centennial", "Durham College - Oshawa", "Durham College - Whitby", "McMaster", 
+											"Queens", "Ryerson", "Seneca", "Trent University", "UofT - Downtown", "UofT - Scarborough" ,
+											"UofT - St. George", "UOIT-Downtown", "UOIT-North", "Western University", "Western University", "York University"); 
+                            for ($i = 0; $i < sizeof($uni); $i++){
+                            echo "<option value=\"{$uni[$i]}\" ";
+                            if ($accounts["university"] == $uni[$i])
+                                echo "selected ";
+                                echo ">{$uni[$i]}</option>";
+                            }
+     
+                        ?>
+ 					</select><br />
+                   </label><br> <br>                
                    <button type="submit" class="btn btn-lg btn-success" name="submit" style="background-color:#007C87">Submit</button>
                 </form>            
         </div>

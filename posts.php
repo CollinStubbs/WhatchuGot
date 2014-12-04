@@ -1,57 +1,21 @@
 <?php require_once("session.php"); ?>
 <?php require("func.php"); ?>
-<?php
-	$message = "";
-	// form is submitted
-	if(isset($_POST['submit'])){
-		$name = $_POST["name"];
-		$email = $_POST["email"];
-		$comment = $_POST["comment"];
-		if (!isset($name) || empty($name)){
-			$message = "Please enter name <br />";
-		}
-		else if (!isset($email) || empty($email)){
-			$message .= "Email Can not be empty<br />";
-		}
-		else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-			$message .= "Invalid email format <br />"; 
-		}
-		else if (!isset($comment) || empty($comment)){
-			$message .= "Please enter a message <br />";
-		}
-		else 
-		{
-			date_default_timezone_set('US/Eastern');
-  			$currtime = time();
-  			$datedb = date('Y-m-d H:i:s', $currtime);
-		    $message = sendMessageToAdmin($name, $email, $comment, $datedb);
-			
-		}
-	}
-	else
-	{
-		$name = "";
-		$email= "";
-		$comment = "";
-		$message = "Please fill-in all the fields to send a message!";
-	}
-?>
+<?php $links=check_logged_in_student(); ?>
 <!DOCTYPE html>
 <html>
     
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Contact Form</title>
+        <title>Posts</title>
         <meta name="description" content="Final Project">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="css.css">
         
         <!-- Bootstrap Core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Custom CSS -->
         <link href="css/agency.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/whatchugot.css">
 
         <!-- Custom Fonts -->
         <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -59,7 +23,7 @@
         <link href='http://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-        
+    </head>
         <body>
             <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -81,36 +45,36 @@
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
-                    <?php 
-						$links = navigationLinks(); 
-						echo $links;
-					?>
+                    <?php echo $links ?>
+                    <li>
+                        <a class="page-scroll" href="logout.php">Log-out</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container-fluid -->
     </nav>
-<!-- Header -->
-    <header class="aboutpage">
-        <div class="container">
-            <div class="contact-text">
-                <div class="body-lead-in">
-                    <?php 
-                        echo $message ;
-                    ?></div>
-                </div>
-               <form action="contact.php" method="post">
-                <label>Full Name<input class="form-control input-lg ContactInput" type="text" name="name" value="<?php echo $name; ?>" ></label><br><br>
-                <label>Email<input type="text" class="form-control input-lg ContactInput" name="email" value="<?php echo $email; ?>"></label><br><br>
-                Message : <textarea class="form-control" name="comment" rows="6" cols="50" value="<?php echo $comment; ?>"></textarea><br>
-                <button name="submit" type="submit" class="btn btn-lg btn-success" style="background-color:#007C87">Submit</button>
-                </form>
-                
-            
+
+    <!-- Header -->
+     <!-- Header -->
+    <header class="adminpage">
+    	<a id="addPost" href="addPost.php">Add Post</a>
+        <div class="container" style="height:80%;">
+            <div class="viewtext">
+            <?php 
+                $posts = getPostByUserAndType($_SESSION["user_id"], $_SESSION["user_type"]);
+                echo $posts;
+            ?>
+            </div>
         </div>
     </header>
-      
+    <div>
+    	
+    </div>
+               <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 
@@ -127,4 +91,3 @@
     <script src="js/agency.js"></script>
  </body>
 </html>
-

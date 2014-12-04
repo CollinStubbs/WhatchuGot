@@ -1,10 +1,13 @@
+<?php require_once("session.php"); ?>
+<?php require_once("func.php"); ?>
+<?php $links=check_logged_in_student(); ?>
 <!DOCTYPE html>
 <html>
     
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Final Proj.</title>
+        <title>Dashboard</title>
         <meta name="description" content="Final Project">
         <link rel="stylesheet" href="css.css">
         
@@ -33,7 +36,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="index.html">Whatchu Got?</a>
+                <a class="navbar-brand page-scroll" href="index.php">Whatchu Got?</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -42,17 +45,9 @@
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
+                    <?php echo $links ?>
                     <li>
-                        <a class="page-scroll" href="login.php">Log-in</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="about.html">About</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="team.html">Team</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="contact.php">Contact</a>
+                        <a class="page-scroll" href="logout.php">Log-out</a>
                     </li>
                 </ul>
             </div>
@@ -65,15 +60,12 @@
     <header class="aboutpage">
         <div class="container">
             <div class="about-text">
-                <div class="body-lead-in">Whatchu Got is a campus classifieds website. It's a place for students to buy and sell things specific to their campus, on their campus. Whether textbooks, pencils, services, or excellently written notes if it's related to your campus then feel free to post it here! </div>
-                </div>
-               <img class=" logoabout" src="img/transbeaver.png" height="380" width="300">
-                <p class="logotext box_textshadow">Whatchu Got?</p>        
+                <div class="body-lead-in" style="font-size: 80px; padding-top: 100px;">Welcome!</div>
+            </div>
+
         </div>
     </header>
-               <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
+          
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 
