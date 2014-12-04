@@ -346,6 +346,7 @@ header .intro-text .intro-heading {
 }
 
 section {
+    height: 100vh;
     padding: 100px 0;
 }
 
@@ -375,15 +376,15 @@ section h3.section-subheading {
     text-transform: none;
 }
 
-
-
-
 .team-member {
     text-align: center;
 }
 
 .team-member img {
     margin-top: 25px;
+    margin-left: auto;
+    height: 128px;
+    width: 128px;
     border: 7px solid #fff;
 }
 

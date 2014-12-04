@@ -54,7 +54,7 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
-<header>
+
     <section id="team" class="team">
         <div class="container">
             <div class="row">
@@ -66,7 +66,7 @@
             <div class="row">
                 <div class="col-sm-4">
                     <div class="team-member">
-                        <img src="img/collin.jpg" class="img-responsive img-circle" alt="" width="128" height="128">
+                        <img src="img/collin.jpg" class="img-responsive img-circle img-centered" alt="" width="128" height="128">
                         <h4>Collin Stubbs</h4>
                         <p class="text-muted"></p>
                         <ul class="list-inline social-buttons">
@@ -79,20 +79,20 @@
                 </div>
                 <div class="col-sm-4">
                     <div class="team-member">
-                        <img src="img/andrew.jpg" class="img-responsive img-circle" alt="" width="128" height="128">
+                        <img src="img/andrew.jpg" class="img-responsive img-circle img-centered" alt="" width="128" height="128">
                         <h4>Andrew Gulla</h4>
                         <p class="text-muted"></p>
                         <ul class="list-inline social-buttons">
-                            <li><a href="#"><i class="rotate fa fa-twitter"></i></a>
+                            <li><a href="https://twitter.com/Andrew_Gulla"><i class="rotate fa fa-twitter"></i></a>
                             </li>
-                            <li><a href="#"><i class="rotate fa fa-linkedin"></i></a>
+                            <li><a href="https://www.linkedin.com/pub/andrew-gulla/45/ab9/763"><i class="rotate fa fa-linkedin"></i></a>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="team-member">
-                        <img src="img/iyosias.jpg" class="img-responsive img-circle" alt="" width="128" height="128">
+                        <img src="img/iyosias.jpg" class="img-responsive img-circle img-centered" alt="" width="128" height="128">
                         <h4>Iyosias Tessema</h4>
                         <p class="text-muted"></p>
                         <ul class="list-inline social-buttons">
@@ -110,7 +110,7 @@
             </div>
         </div>
     </section>
-            </header>
+          
              
 
     <!-- Bootstrap Core JavaScript -->
