@@ -54,7 +54,7 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
-
+<header>
     <section id="team" class="team">
         <div class="container">
             <div class="row">
@@ -110,8 +110,8 @@
             </div>
         </div>
     </section>
-               <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+            </header>
+             
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
@@ -123,7 +123,7 @@
 
     <!-- Contact Form JavaScript -->
     <script src="js/jqBootstrapValidation.js"></script>
-    <script src="js/contact_me.js"></script>
+  
 
     <!-- Custom Theme JavaScript -->
     <script src="js/agency.js"></script>

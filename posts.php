@@ -59,7 +59,7 @@
     <!-- Header -->
      <!-- Header -->
     <header class="adminpage">
-    	<a id="addPost" href="addPost.php">Add Post</a>
+    	<a id="addPost" class="postnew btn btn-lg btn-success" href="addPost.php">Add Post</a>
         <div class="container" style="height:80%;">
             <div class="viewtext">
             <?php 
