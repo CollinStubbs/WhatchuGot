@@ -386,7 +386,7 @@ header .about-text {
 .viewtext {
    height:100%;
     padding: 10px;
-    overflow: scroll;
+    overflow-y: scroll;
     border-radius: 0.6em 0.6em 0.6em 0.6em;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     background-color: #f9fae5;
@@ -786,12 +786,11 @@ section h3.section-subheading {
 }
 
 .team-member {
-    margin-bottom: 50px;
     text-align: center;
 }
 
 .team-member img {
-    margin: 0 auto;
+    margin-top: 25px;
     border: 7px solid #fff;
 }
 

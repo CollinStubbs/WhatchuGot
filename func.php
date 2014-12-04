@@ -532,10 +532,10 @@ function navigationLinks(){
 		else {
 			$links = "<li><a class=\"page-scroll\" href=\"AllMessages.php\">Messages</a></li>";
 			$links .= "<li><a class=\"page-scroll\" href=\"posts.php\">My Posts</a></li>";
-			$links .= "<li><a class=\"page-scroll\" href=\"posts.php\">Posts</a></li>";
 			$links .= "<li><a class=\"page-scroll\" href=\"about.php\">About</a></li>";
 			$links .= "<li><a class=\"page-scroll\" href=\"team.php\">Team</a></li>";
 			$links .= "<li><a class=\"page-scroll\" href=\"contact.php\">Contact</a></li>";
+			$links .= "<li><a class=\"page-scroll\" href=\"logout.php\">Log-out</a></li>";
 		}
 	}
 	return $links;
