@@ -288,11 +288,11 @@ function getAllPost(){
 	  }
 	  else{
 		  
-		  $msgTable = "<table width=\"100%\" border=\"1\">";
+		  $msgTable = "<table width=\"100%\" class=\"posts\" border=\"1\">";
 			$msgTable .= "<tr><th>Post ID</th><th>Title</th><th>Description</th><th>University</th><th>Date</th><th>Image</th><th>Link</th>";
 			for ($i = 0; $i <$statement->rowCount(); $i++) {
 				$row = $statement->fetch();
-				$msgTable .= "<tr><td>" . $row["postid"] ."</td>";
+				$msgTable .= "<tr class=\"".$i . "\"><td>" . $row["postid"] ."</td>";
 				$msgTable .= "<td>" . $row["title"] . "</td>";
 				$msgTable .= "<td>" . $row["description"] . "</td>";
 				$msgTable .= "<td>" . $row["university"] . "</td>";
@@ -425,7 +425,7 @@ function sendMessageToAdmin($name, $email, $comment, $datedb){
 function sendMessageToUser($name, $post_id, $email, $comment, $datedb){
 	require("cred.php");
 	$message = "";
-	$userName = getUserNameByPostID(2);
+	$userName = getUserNameByPostID($post_id);
 	if ($userName != "Not Found"){
 		$statement = $conn->prepare("INSERT INTO message(senderEmail, recieverId, date, message, postId) 
 									values (:senderEmail, :recieverId, :date, :message, :postId)");

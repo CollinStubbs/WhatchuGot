@@ -17,6 +17,7 @@
 
         <!-- Custom CSS -->
         <link href="css/agency.css" rel="stylesheet">
+        <link href="css/whatchugot.css" rel="stylesheet">
 
         <!-- Custom Fonts -->
         <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -69,6 +70,29 @@
     <header class="adminpage">
         <div class="container" style="height:80%;">
             <div class="viewtext">
+            <div id="actionHeader">
+            <select name="univeristy" id="univeristy" onChange="filterUniversity()">
+            	<option value="0">All University</option>
+    			<option value="Brock">Brock</option>
+                <option value="Centennial">Centennial</option>
+                <option value="Durham College - Oshawa">Durham College - Oshawa</option>
+                <option value="Durham College - Whitby">Durham College - Whitby</option>
+                <option value="George Brown">George Brown</option>
+                <option value="McMaster">McMaster</option>
+                <option value="Queens">Queens</option>  
+                <option value="Ryerson">Ryerson</option>
+                <option value="Seneca">Seneca</option>
+                <option value="Trent University">Trent University</option>
+                <option value="UofT - Downtown">UofT - Downtown</option>
+                <option value="UofT - Scarborough">UofT - Scarborough</option>
+                <option value="UofT - St. George">UofT - St. George</option>
+                <option value="UOIT-Downtown">UOIT-Downtown</option>
+                <option value="UOIT-North">UOIT-North</option>
+                <option value="Western University">Western University</option>
+                <option value="York University">York University</option>
+            </select>
+        </div>
+        	<br /><br />
             <?php 
                 $posts = getAllPost();
                 echo $posts;
@@ -80,20 +104,8 @@
     	
     </div>
                
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-    <script src="js/classie.js"></script>
-    <script src="js/cbpAnimatedHeader.js"></script>
-
-    <!-- Contact Form JavaScript -->
-    <script src="js/jqBootstrapValidation.js"></script>
-    <script src="js/contact_me.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="js/agency.js"></script>
+	
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="what.js" type="text/javascript"></script>
  </body>
 </html>

@@ -69,12 +69,12 @@
                       Durham <span class="caret"></span>
                    </button>
                    <ul class="dropdown-menu button-xl" role="menu">
-                      <li><a href="viewPost.php?id=uoit">UOIT - North</a></li>
-                      <li><a href="viewPost.php">UOIT - Downtown</a></li>
-                      <li><a href="viewPost.php">Trent University</a></li>
+                      <li><a href="viewPost.php?id=UOIT-North">UOIT - North</a></li>
+                      <li><a href="viewPost.php?id=UOIT-Downtown">UOIT - Downtown</a></li>
+                      <li><a href="viewPost.php?id=Trent University">Trent University</a></li>
                       <li class="divider"></li>
-                      <li><a href="viewPost.php">Durham College - Oshawa</a></li>
-                       <li><a href="viewPost.php">Durham College - Whitby</a></li>
+                      <li><a href="viewPost.php?id=Durham College - Oshawa">Durham College - Oshawa</a></li>
+                       <li><a href="viewPost.php?id=Durham College - Whitby">Durham College - Whitby</a></li>
                    </ul>
                 </div>
                 <div class="btn-group">
@@ -83,13 +83,13 @@
                       Toronto <span class="caret"></span>
                    </button>
                    <ul class="dropdown-menu" role="menu">
-                      <li><a href="viewPost.php">UofT - Scarborough</a></li>
-                      <li><a href="viewPost.php">UofT - Downtown</a></li>
-                      <li><a href="viewPost.php">UofT - St. George</a></li>
-                       <li><a href="viewPost.php">Ryerson</a></li>
+                      <li><a href="viewPost.php?id=UofT - Scarborough">UofT - Scarborough</a></li>
+                      <li><a href="viewPost.php?id=UofT - Downtown">UofT - Downtown</a></li>
+                      <li><a href="viewPost.php?id=UofT - St. George">UofT - St. George</a></li>
+                       <li><a href="viewPost.php?id=Ryerson">Ryerson</a></li>
                       <li class="divider"></li>
-                      <li><a href="viewPost.php">George Brown</a></li>
-                       <li><a href="viewPost.php">Centennial</a></li>
+                      <li><a href="viewPost.php?id=George Brown">George Brown</a></li>
+                       <li><a href="viewPost.php?id=Centennial">Centennial</a></li>
                    </ul>
                 </div>
                 <div class="btn-group">
@@ -98,14 +98,13 @@
                       Other <span class="caret"></span>
                    </button>
                    <ul class="dropdown-menu" role="menu">
-                      <li><a href="viewPost.php">Western University</a></li>
-                      <li><a href="viewPost.php">York University</a></li>
-                      <li><a href="viewPost.php">Mcmaster</a></li>
-                       <li><a href="viewPost.php">Queens</a></li>
-                       <li><a href="viewPost.php">Brock</a></li>
+                      <li><a href="viewPost.php?id=Western University">Western University</a></li>
+                      <li><a href="viewPost.php?id=York University">York University</a></li>
+                      <li><a href="viewPost.php?id=Mcmaster">Mcmaster</a></li>
+                       <li><a href="viewPost.php?id=Queens">Queens</a></li>
+                       <li><a href="viewPost.php?id=Brock">Brock</a></li>
                       <li class="divider"></li>
-                      <li><a href="viewPost.php">Mohawk College</a></li>
-                       <li><a href="viewPost.php">Seneca</a></li>
+                       <li><a href="viewPost.php?id=Seneca">Seneca</a></li>
                    </ul>
                 </div>
         </div>
